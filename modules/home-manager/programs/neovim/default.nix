@@ -14,7 +14,6 @@
         withNodeJs = true;
         withPython3 = true;
         withRuby = false;
-        withRust = true;
 
         extraPackages = with pkgs; [
           bash-language-server
