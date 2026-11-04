@@ -14,6 +14,6 @@
         };
       };
 
-      home.sessionPath = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin [ "$HOME/.local/bin" ];
+      home.sessionPath = [ "$HOME/.local/bin" ];
     };
 }

@@ -1,5 +1,5 @@
 {
-  description = "NixOS and nix-darwin configs for my machines";
+  description = "NixOS configs for my machines";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -21,10 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

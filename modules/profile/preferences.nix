@@ -75,14 +75,7 @@
                             options = {
                               family = lib.mkOption { type = lib.types.str; };
                               package = lib.mkOption { type = lib.types.package; };
-                              size = lib.mkOption {
-                                type = lib.types.submodule {
-                                  options = {
-                                    linux = lib.mkOption { type = lib.types.int; };
-                                    darwin = lib.mkOption { type = lib.types.int; };
-                                  };
-                                };
-                              };
+                              size = lib.mkOption { type = lib.types.int; };
                             };
                           };
                         };
@@ -147,10 +140,7 @@
             terminal = {
               family = "MesloLGS Nerd Font";
               package = pkgs.nerd-fonts.meslo-lg;
-              size = {
-                linux = 12;
-                darwin = 15;
-              };
+              size = 12;
             };
           };
         };

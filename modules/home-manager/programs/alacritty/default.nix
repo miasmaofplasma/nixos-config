@@ -43,20 +43,8 @@
             multiplier = 3;
           };
 
-          keyboard.bindings = lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
-            {
-              key = "Slash";
-              mods = "Control";
-              chars = ''\u001f'';
-            }
-          ];
-
           font = {
-            size =
-              if pkgs.stdenv.hostPlatform.isDarwin then
-                config.profile.appearance.fonts.terminal.size.darwin
-              else
-                config.profile.appearance.fonts.terminal.size.linux;
+            size = config.profile.appearance.fonts.terminal.size;
             normal = {
               family = config.profile.appearance.fonts.terminal.family;
               style = "Regular";

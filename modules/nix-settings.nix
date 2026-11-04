@@ -19,7 +19,10 @@
         value.source = value.flake;
       }) config.nix.registry;
 
-      nix.settings.experimental-features = "nix-command flakes";
+      nix.settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       nix.optimise.automatic = true;
     };
 }

@@ -7,7 +7,7 @@
       ...
     }:
     {
-      systemd.user.startServices = lib.mkIf (!pkgs.stdenv.hostPlatform.isDarwin) "sd-switch";
+      systemd.user.startServices = "sd-switch";
 
       home.packages =
         with pkgs;
@@ -32,15 +32,6 @@
           unzip
           wl-clipboard
           zellij
-        ]
-        ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
-          anki-bin
-          hidden-bar
-          mos
-          podman
-          raycast
-        ]
-        ++ lib.optionals (!pkgs.stdenv.hostPlatform.isDarwin) [
           anki
           tesseract
         ];
