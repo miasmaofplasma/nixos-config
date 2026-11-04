@@ -14,7 +14,7 @@
         };
         signing = {
           key = config.profile.gitKey;
-          signByDefault = true;
+          signByDefault = false;
         };
       };
 

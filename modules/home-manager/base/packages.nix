@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.modules.homeManager.base =
     {
@@ -12,29 +12,29 @@
       home.packages =
         with pkgs;
         [
-          awscli2
           bat
-          brave
           dig
           eza
           fd
+          firefox
           github-copilot-cli
+          inputs.omp.packages.${pkgs.stdenv.hostPlatform.system}.omp
           jq
           nh
           nodejs
           opencode
-          openconnect
-          opentofu
           pipenv
           podman-compose
           podman-tui
           python3
           ripgrep
           telegram-desktop
+          unzip
+          wl-clipboard
+          zellij
         ]
         ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
           anki-bin
-          colima
           hidden-bar
           mos
           podman
@@ -43,8 +43,6 @@
         ++ lib.optionals (!pkgs.stdenv.hostPlatform.isDarwin) [
           anki
           tesseract
-          unzip
-          wl-clipboard
         ];
     };
 }

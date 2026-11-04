@@ -41,7 +41,7 @@
 
       xdg.configFile = {
         "nvim" = {
-          source = ./lazyvim;
+          source = ./astronvim;
           recursive = true;
         };
       };

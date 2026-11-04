@@ -32,6 +32,11 @@
     };
 
     import-tree.url = "github:vic/import-tree";
+
+    omp = {
+      url = "github:can1357/oh-my-pi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
