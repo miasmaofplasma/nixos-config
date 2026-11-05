@@ -13,6 +13,8 @@
         shellAliases = {
           ff = "fastfetch";
           open = lib.mkIf pkgs.stdenv.hostPlatform.isLinux "xdg-open";
+          nixos-rebuild = "sudo nixos-rebuild";
+          rebuild = "sudo nixos-rebuild switch --flake /home/miasmaofplasma/nixos-config";
 
           # git
           gaa = "git add --all";
