@@ -14,7 +14,6 @@
 
       # FIXME: Hyprland's quirk. Without it, the cursor in XWayland applications is inconsistent.
       environment.sessionVariables = {
-        HYPRLAND_CONFIG = "$HOME/.config/hypr/hyprland.conf";
         XCURSOR_SIZE = config.profile.appearance.cursorTheme.size;
         XCURSOR_THEME = config.profile.appearance.cursorTheme.name;
       };

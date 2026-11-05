@@ -18,8 +18,7 @@
       };
 
       xdg.configFile = {
-        "hypr/hyprland.conf".source = ./hyprland.conf;
-
+        "hypr/hyprland.lua".source = ./hyprland.lua;
         "hypr/xdph.conf".text = ''
           screencopy {
             allow_token_by_default = true
