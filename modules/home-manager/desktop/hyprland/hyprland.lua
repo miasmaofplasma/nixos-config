@@ -1,5 +1,4 @@
 -- Hyprland Native Lua Configuration (v0.55+)
--- Generated for desktop
 
 ------------------
 ---- MONITORS ----
@@ -76,13 +75,13 @@ hl.bind(mainMod .. " + SHIFT + F",      hl.dsp.exec_cmd("nautilus"))
 hl.bind(mainMod .. " + SHIFT + T",      hl.dsp.exec_cmd("Telegram"))
 
 -- Window Actions
-hl.bind(mainMod .. " + C",             hl.dsp.window.close())
+hl.bind(mainMod .. " + C",             hl.dsp.window.close({}))
 hl.bind(mainMod .. " + F",             hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + M",             hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + SHIFT + M",     hl.dsp.window.fullscreen({ action = "fullscreen" }))
+hl.bind(mainMod .. " + M",             hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + M",     hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + Return",        hl.dsp.layout("swapwithmaster"))
 hl.bind(mainMod .. " + R",             hl.dsp.layout("orientationcycle"))
-hl.bind("CTRL + ALT + Q",              hl.dsp.exec_cmd("hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind("CTRL + ALT + Q",              hl.dsp.exec_cmd("hyprctl dispatch exit"))
 
 -- Focus Movement
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -123,15 +122,15 @@ hl.bind(mainMod .. " + CTRL + S",     hl.dsp.exec_cmd("grimblast -f save output 
 hl.bind(mainMod .. " + SHIFT + R",    hl.dsp.exec_cmd("toggle-screen-recording"))
 hl.bind("CTRL + ALT + P",             hl.dsp.exec_cmd("gnome-pomodoro --start-stop"))
 
--- Hardware Audio & Brightness Controls
-hl.bind(", XF86MonBrightnessUp",       hl.dsp.exec_cmd("noctalia-shell ipc call brightness increase"))
-hl.bind(", XF86MonBrightnessDown",     hl.dsp.exec_cmd("noctalia-shell ipc call brightness decrease"))
-hl.bind(", XF86AudioRaiseVolume",      hl.dsp.exec_cmd("noctalia-shell ipc call volume increase"))
-hl.bind(", XF86AudioLowerVolume",      hl.dsp.exec_cmd("noctalia-shell ipc call volume decrease"))
-hl.bind(", XF86AudioMute",             hl.dsp.exec_cmd("noctalia-shell ipc call volume muteOutput"))
-hl.bind("SHIFT, XF86AudioRaiseVolume", hl.dsp.exec_cmd("noctalia-shell ipc call volume increaseInput"))
-hl.bind("SHIFT, XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia-shell ipc call volume decreaseInput"))
-hl.bind("SHIFT, XF86AudioMute",        hl.dsp.exec_cmd("noctalia-shell ipc call volume muteInput"))
+-- Hardware Audio & Brightness Controls (XF86 keys without leading commas)
+hl.bind("XF86MonBrightnessUp",        hl.dsp.exec_cmd("noctalia-shell ipc call brightness increase"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown",      hl.dsp.exec_cmd("noctalia-shell ipc call brightness decrease"), { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume",       hl.dsp.exec_cmd("noctalia-shell ipc call volume increase"),     { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume",       hl.dsp.exec_cmd("noctalia-shell ipc call volume decrease"),     { locked = true, repeating = true })
+hl.bind("XF86AudioMute",              hl.dsp.exec_cmd("noctalia-shell ipc call volume muteOutput"),   { locked = true })
+hl.bind("SHIFT + XF86AudioRaiseVolume", hl.dsp.exec_cmd("noctalia-shell ipc call volume increaseInput"),  { locked = true, repeating = true })
+hl.bind("SHIFT + XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia-shell ipc call volume decreaseInput"),  { locked = true, repeating = true })
+hl.bind("SHIFT + XF86AudioMute",        hl.dsp.exec_cmd("noctalia-shell ipc call volume muteInput"),    { locked = true })
 
 ----------------------
 ---- WINDOW RULES ----
