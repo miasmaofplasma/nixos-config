@@ -1,4 +1,4 @@
-theme "dracula"
+theme "catppuccin-frappe"
 
 keybinds clear-defaults=true {
     normal {

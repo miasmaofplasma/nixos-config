@@ -16,6 +16,7 @@
             gitKey = lib.mkOption { type = lib.types.str; };
             avatar = lib.mkOption { type = lib.types.path; };
             wallpaper = lib.mkOption { type = lib.types.path; };
+            wallpapers = lib.mkOption { type = lib.types.path; };
 
             appearance = lib.mkOption {
               type = lib.types.submodule {
@@ -105,6 +106,7 @@
         gitKey = "49B107978CBDF56D";
         avatar = ./avatar;
         wallpaper = ./wallpaper.jpg;
+        wallpapers = ./wallpapers;
 
         appearance = {
           catppuccin = {

@@ -24,16 +24,19 @@
       imports = [
         inputs.noctalia.homeModules.default
       ];
+      home.file.".local/share/wallpapers".source = config.profile.wallpapers;
 
-      home.file.".cache/noctalia/wallpapers.json".text = builtins.toJSON {
-        defaultWallpaper = config.profile.wallpaper;
-      };
-
-      programs.noctalia-shell = {
+      programs.noctalia = {
         enable = true;
-        inherit colors settings;
-        inherit (pluginConfig) plugins pluginSettings;
+        package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
         systemd.enable = true;
+        settings = {
+          wallpaper = {
+            enabled = true;
+            directory = "${config.home.homeDirectory}/.local/share/wallpapers";
+            default.path = "${config.profile.wallpapers}/snowy-mountain.jpg";
+          };
+        };
       };
     };
 }

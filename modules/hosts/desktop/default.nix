@@ -1,6 +1,6 @@
 { inputs, config, ... }:
 let
-  inherit (config.flake.modules) nixos;
+  inherit (config.flake.modules) homeManager nixos;
   username = "miasmaofplasma";
 in
 {
@@ -42,6 +42,7 @@ in
     };
 
     home-manager.users.${username} = {
+      imports = [ homeManager.rolesGamedev ];
       programs.home-manager.enable = true;
       home = {
         inherit username;
