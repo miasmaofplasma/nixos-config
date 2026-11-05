@@ -324,6 +324,22 @@
         "type": "github"
       }
     },
+    "nvim-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793856576,
+        "narHash": "sha256-8Sd41Y+p48vQZ7EK7k0ruUZYRJ96OJzwdspVTtW3weM=",
+        "owner": "miasmaofplasma",
+        "repo": "nvim-config",
+        "rev": "8afff236c8a130a158ad097ef1ac09cedb252a3c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miasmaofplasma",
+        "repo": "nvim-config",
+        "type": "github"
+      }
+    },
     "omp": {
       "inputs": {
         "bun2nix": "bun2nix",
@@ -359,6 +375,7 @@
         "import-tree": "import-tree",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
+        "nvim-config": "nvim-config",
         "omp": "omp"
       }
     },

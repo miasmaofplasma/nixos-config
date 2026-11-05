@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.modules.homeManager.programsNeovim =
     {
@@ -18,16 +18,20 @@
         extraPackages = with pkgs; [
           bash-language-server
           black
+          csharp-ls
           eslint
+          gcc
           gopls
           gotools
           lua-language-server
           markdownlint-cli
+          marksman
           nixd
           nixfmt
           prettier
           pyright
           ruff
+          rust-analyzer
           shellcheck
           shfmt
           stylua
@@ -39,12 +43,7 @@
         ];
       };
 
-      xdg.configFile = {
-        "nvim" = {
-          source = ./astronvim;
-          recursive = true;
-        };
-      };
+      xdg.configFile."nvim".source = inputs.nvim-config;
 
       home.sessionVariables = {
         CATPPUCCIN_FLAVOR = config.catppuccin.flavor;

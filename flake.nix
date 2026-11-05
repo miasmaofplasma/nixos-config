@@ -32,6 +32,11 @@
       url = "github:can1357/oh-my-pi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvim-config = {
+      url = "github:miasmaofplasma/nvim-config";
+      flake = false;
+    };
   };
 
   outputs =

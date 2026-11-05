@@ -5,7 +5,8 @@
     {
       programs.zellij = {
         enable = true;
+        extraConfig = builtins.readFile ./config.kdl;
       };
-      catppuccin.zellij.enable = true;
+      catppuccin.zellij.enable = false;
     };
 }

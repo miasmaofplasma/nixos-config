@@ -135,9 +135,5 @@ hl.bind("SHIFT + XF86AudioMute",        hl.dsp.exec_cmd("noctalia-shell ipc call
 ----------------------
 ---- WINDOW RULES ----
 ----------------------
-hl.window_rule({ name = "firefox-ws",    match = { class = "^(firefox)$" },                  workspace = 1 })
-hl.window_rule({ name = "alacritty-ws",  match = { class = "^(Alacritty)$" },                workspace = 2 })
-hl.window_rule({ name = "telegram-ws",   match = { class = "^(org\\.telegram\\.desktop)$" }, workspace = 3 })
-hl.window_rule({ name = "steam-ws",      match = { class = "^(steam)$" },                    workspace = 4 })
 hl.window_rule({ name = "pavucontrol",   match = { class = "^(org\\.pulseaudio\\.pavucontrol)$" }, float = true })
 hl.window_rule({ name = "calculator",    match = { class = "^(gnome-calculator|org\\.gnome\\.Calculator)$" }, float = true })

@@ -15,14 +15,14 @@
             live_config_reload = true;
           };
 
-          # terminal = {
-          #   shell.program = "${pkgs.zsh}/bin/zsh";
-          #   shell.args = [
-          #     "-l"
-          #     "-c"
-          #     "tmux attach || tmux"
-          #   ];
-          # };
+          terminal.shell = {
+            program = "${pkgs.zellij}/bin/zellij";
+            args = [
+              "attach"
+              "-c"
+              "terminal"
+            ];
+          };
 
           window = {
             decorations = if pkgs.stdenv.hostPlatform.isDarwin then "buttonless" else "full";
