@@ -10,6 +10,21 @@ hl.monitor({
     scale    = "auto",
 })
 
+--------------------
+---- WORKSPACES ----
+--------------------
+local primaryMonitor   = "DP-1"
+local secondaryMonitor = "DP-2"
+
+for i = 1, 10 do
+    local targetMonitor = (i % 2 == 1) and primaryMonitor or secondaryMonitor
+    hl.workspace_rule({
+        workspace = tostring(i),
+        monitor   = targetMonitor,
+        default   = (i == 1 or i == 2),
+    })
+end
+
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
