@@ -22,7 +22,6 @@
           jq
           nh
           nodejs
-          opencode
           pipenv
           podman-compose
           podman-tui
