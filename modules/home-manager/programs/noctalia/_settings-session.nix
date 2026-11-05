@@ -110,11 +110,11 @@
   nightLight = {
     autoSchedule = false;
     dayTemp = "6500";
-    enabled = true;
+    enabled = false;
     forced = false;
     manualSunrise = "07:00";
     manualSunset = "20:00";
-    nightTemp = "4000";
+    nightTemp = "6500";
   };
 
   noctaliaPerformance = {
