@@ -14,7 +14,7 @@
           ff = "fastfetch";
           open = lib.mkIf pkgs.stdenv.hostPlatform.isLinux "xdg-open";
           nixos-rebuild = "sudo nixos-rebuild";
-          rebuild = "sudo nixos-rebuild switch --flake /home/miasmaofplasma/nixos-config && exec zsh";
+          rebuild = "sudo nixos-rebuild switch --flake /home/miasmaofplasma/nixos-config";
 
           # git
           gaa = "git add --all";
@@ -51,7 +51,6 @@
           autoload -z edit-command-line
           zle -N edit-command-line
           bindkey "^v" edit-command-line
-
         '';
       };
     };

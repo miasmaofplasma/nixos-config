@@ -45,7 +45,7 @@ hl.config({
     },
 
     cursor = {
-        no_warps = true,
+        no_warps = false,
     },
 
     misc = {
@@ -53,11 +53,23 @@ hl.config({
         disable_hyprland_logo   = true,
         disable_splash_rendering = true,
         vrr = 2,
+        -- If the lock client dies while the session is locked (e.g. the shell
+        -- crashes mid-lock), let a fresh locker take the still-locked session
+        -- back over instead of a dead "lock screen app died" screen.
+        allow_session_lock_restore = true,
+        -- Safety net: a DPMS-off output (idle blank or a bad dispatch) can
+        -- always be woken by moving the mouse instead of needing another
+        -- suspend/resume cycle to recover.
+        mouse_move_enables_dpms = true,
+    },
+
+    decoration = {
+        dim_special = 0.5,
     },
 
     input = {
         kb_layout  = "us",
-        kb_options = "grp:win_space_toggle",
+        kb_options = "",
         repeat_delay = 250,
         repeat_rate  = 40,
         follow_mouse = 1,
@@ -117,18 +129,24 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
+-- Scratchpad / Magic Workspace (Minimize & Restore)
+hl.bind(mainMod .. " + S",                 hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + SHIFT + minus",     hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + SHIFT + Z",         hl.dsp.exec_cmd("systemctl suspend"))
+
 -- Mouse Bindings
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Desktop Utilities & Noctalia IPC
-hl.bind("CTRL + Space",               hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
+hl.bind(mainMod .. " + Space",         hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 hl.bind("ALT + SHIFT + V",            hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"))
 hl.bind(mainMod .. " + SHIFT + W",     hl.dsp.exec_cmd("noctalia msg panel-toggle wallpaper"))
 hl.bind("CTRL + ALT + L",             hl.dsp.exec_cmd("noctalia msg session lock"))
-hl.bind(mainMod .. " + C",            hl.dsp.exec_cmd("noctalia msg panel-toggle control-center"))
 hl.bind(mainMod .. " + N",            hl.dsp.exec_cmd("noctalia msg panel-toggle control-center"))
 hl.bind(mainMod .. " + SHIFT + Backspace", hl.dsp.exec_cmd("noctalia msg notification-clear-active"))
+hl.bind("ALT + TAB",                     hl.dsp.exec_cmd("noctalia msg window-switcher hold"))
+hl.bind("ALT + SHIFT + TAB",             hl.dsp.exec_cmd("noctalia msg window-switcher hold reverse"))
 
 -- Screenshots & Tools
 hl.bind(mainMod .. " + SHIFT + C",    hl.dsp.exec_cmd("hyprpicker -a"))
@@ -153,3 +171,4 @@ hl.bind("SHIFT + XF86AudioMute",        hl.dsp.exec_cmd("noctalia msg mic-volume
 ----------------------
 hl.window_rule({ name = "pavucontrol",   match = { class = "^(org\\.pulseaudio\\.pavucontrol)$" }, float = true })
 hl.window_rule({ name = "calculator",    match = { class = "^(gnome-calculator|org\\.gnome\\.Calculator)$" }, float = true })
+hl.window_rule({ name = "magic-scratchpad-opacity", match = { workspace = "special:magic" }, opacity = "0.7 override 0.7 override" })

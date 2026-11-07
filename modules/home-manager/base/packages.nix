@@ -30,6 +30,7 @@
           telegram-desktop
           unzip
           wl-clipboard
+          stremio-linux-shell
           zellij
           anki
           tesseract

@@ -12,13 +12,18 @@
       # Load nvidia driver for Xorg and Wayland
       services.xserver.videoDrivers = [ "nvidia" ];
 
+      # Both displays run on the NVIDIA dGPU; the Raphael iGPU is physically unused.
+      # amdgpu's suspend/resume path fails on this board (pci_pm_suspend -22 aborts
+      # system suspend with EBUSY) and spams spurious PME wakeups, killing S3 sleep.
+      boot.blacklistedKernelModules = [ "amdgpu" ];
+
       hardware.nvidia = {
         # Modesetting is required for Wayland compositors (Hyprland, Niri, Mango, etc.)
         modesetting.enable = true;
 
         # Nvidia power management. Experimental, and can cause sleep/suspend fails.
         # Enable this if you have graphical corruption issues or sleep issues.
-        powerManagement.enable = false;
+        powerManagement.enable = true;
         powerManagement.finegrained = false;
 
         # Use the NVidia open source kernel module (supported on Turing+ such as RTX 4080 Super).

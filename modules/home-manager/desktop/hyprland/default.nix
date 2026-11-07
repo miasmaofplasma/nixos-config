@@ -1,10 +1,7 @@
 { ... }:
 {
   flake.modules.homeManager.desktopHyprland =
-    {
-      pkgs,
-      ...
-    }:
+    { pkgs, ... }:
     {
       xdg.desktopEntries.quit-all-applications = {
         name = "Quit All Applications";
